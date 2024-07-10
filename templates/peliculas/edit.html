@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>{% include 'header.html' %}
+</head>
+
+<div>
+    {%for gasto in gastos%}
+
+<form method="post" action="/update" enctype="multipart/form-data">
+    ID:
+    <input type="number" name="txtID" id="txtID" value="{{gasto[0]}}" /> <br/>
+    Monto:
+    <input type="number" name="txtMonto" id="txtMonto" value="{{gasto[1]}}"/> <br/>
+    Fecha:
+    <input type="date" name="txtFecha" id="txtFecha" value="{{gasto[2]}}"/> <br/>
+    Rubro:
+    <input type="text" name="txtRubro" id="txtRubro" value="{{gasto[3]}}" /> <br/>
+    Forma de pago:
+    <input type="text" name="txtPago" id="txtPago" value="{{gasto[4]}}"/> <br/>
+    Cuenta origen:
+    <input type="text" name="txtOrigen" id="txtOrigen" value="{{gasto[5]}}"/> <br/>
+    Foto:
+    <img class="img-thumbnail" width="100" src="{{url_for('uploads',nombreFoto=gasto[6])}}" alt=""><br><br>
+    <input type="file" name="txtFoto" id="txtFoto"/> <br/>  <br/>
+    <input type="submit" value="Guardar" />
+</form>
+{% endfor %}
+
+</div>
+
+{% include 'footer.html' %}

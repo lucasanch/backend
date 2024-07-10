@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    {% include 'header.html' %}
+    <br/>
+    <a href="{{url_for('create')}}" class="btn btn-info" style="margin: 5px"> Ingresar nuevo gasto </a>
+    <br/><br/>
+
+    <title>Tabla de Gastos</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #1B275F;
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <h2>Tabla de Gastos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Monto</th>
+                <th>Fecha</th>
+                <th>Rubro</th>
+                <th>Forma de Pago</th>
+                <th>Origen</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for gasto in gastos%}
+            <tr>
+                <td>{{gasto[0]}}</td>
+                <td>{{gasto[1]}}</td>
+                <td>{{gasto[2]}}</td>
+                <td>{{gasto[3]}}</td>
+                <td>{{gasto[4]}}</td>
+                <td>{{gasto[5]}}</td>
+                <td> <img width="100" src="uploads/{{gasto[6]}}" alt="foto gasto"> </td>
+                <td> <a class="btn btn-warning" href="/edit/{{gasto[0]}}"> Editar </a>
+                 <a class="btn btn-danger" onclick="return confirm('¿Desea borrar el gasto?')" href="/destroy/{{gasto[0]}}"> Borrar </a> </td>
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+</body>
+{% include 'footer.html' %}
+
+</html>

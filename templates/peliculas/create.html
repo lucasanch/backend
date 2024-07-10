@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+
+<form method="post" action="/store" enctype="multipart/form-data">
+    Monto:
+    <input type="number" step="0.01" name="txtMonto" id="txtMonto" /> <br/>
+    Fecha:
+    <input type="date" name="txtFecha" id="txtFecha" /> <br/>
+    Rubro:
+    <input type="text" name="txtRubro" id="txtRubro" /> <br/>
+    Forma de pago:
+    <input type="text" name="txtPago" id="txtPago" /> <br/>
+    Cuenta origen:
+    <input type="text" name="txtOrigen" id="txtOrigen" /> <br/>
+    Insertar Foto:
+    <input type="file" name="txtFoto" id="txtFoto" /> <br/>
+    <br/>
+    <input type="submit" value="Agregar gasto" />
+</form>
+
+
+{% include 'footer.html' %}
